@@ -1,4 +1,4 @@
-var InputHint = function(elemLabel, elemInput, hintClass){
+var InputHint = function (elemLabel, elemInput, hintClass) {
   this.elemLabel = $(elemLabel);
   this.elemInput = $(elemInput);
   this.hintClass = hintClass;
@@ -17,9 +17,9 @@ InputHint.prototype.removeLabel = function () {
   this.elemLabel.remove();
 }
 
-InputHint.prototype.inputFocusEvent = function (){
+InputHint.prototype.inputFocusEvent = function () {
   var _this = this;
-  this.elemInput.bind("focus", function (){
+  this.elemInput.bind("focus", function () {
     $(this).removeClass(_this.hintClass).val("");
   })
 }
@@ -27,14 +27,14 @@ InputHint.prototype.inputFocusEvent = function (){
 InputHint.prototype.inputBlurEvent = function () {
   var _this = this;
   this.elemInput.bind("blur", function () {
-    if($(this).val().trim() == ""){
-       _this.setInputValue();
-       _this.addClassOnInput();
+    if ($(this).val().trim() == "") {
+      _this.setInputValue();
+      _this.addClassOnInput();
     }
   })
 }
 
-InputHint.prototype.bindInputEvents = function(){
+InputHint.prototype.bindInputEvents = function () {
   this.inputFocusEvent();
   this.inputBlurEvent();
 }
