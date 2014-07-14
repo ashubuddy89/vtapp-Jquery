@@ -1,7 +1,7 @@
 //1. Add five new list items to the end of the unordered list #myList.
-for (i = 0; i < 5; i++) {
+for (i=0; i < 5; i++){
   var listLenght = $("#myList li").length + 1;
-  $("#myList").append("<li>List Item " + listLenght + "</li>")
+  $("#myList").append("<li>List Item "+listLenght+"</li>")
 }
 
 
