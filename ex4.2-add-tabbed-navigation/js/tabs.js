@@ -1,4 +1,4 @@
-var TabNavigation = function (elemHide, tabsLinkClass) {
+var TabNavigation = function (elemHide) {
   this.elemHide = $(elemHide);
   this.newUnorderList = $("<ul class='tab_nav'></ul>");
 }
@@ -16,13 +16,13 @@ TabNavigation.prototype.createNewTabList = function () {
 TabNavigation.prototype.createNewListElements = function () {
   var _this = this;
   this.elemHide.each(function () {
-    var elemText = $(this).find("h2").text();
-    var $newUnorderListItem = $('<li class="tablink" data-nav=#' + elemText.toLowerCase() + '><span>' + elemText + '</span></li>')
+    var elemText = $(this).find("h2").text(),
+      $newUnorderListItem = $('<li class="tablink" data-nav=#' + elemText.toLowerCase() + '><span>' + elemText + '</span></li>');
     _this.newUnorderList.append($newUnorderListItem);
   });
 }
 
-TabNavigation.prototype.cssTabsNavigation = function () {
+TabNavigation.prototype.cssTabNavigation = function () {
   this.cssTabNavUl();
   this.cssTabElementsLi();
 }
@@ -49,9 +49,9 @@ TabNavigation.prototype.cssTabElementsLi = function () {
 }
 
 TabNavigation.prototype.tabClickEvent = function () {
-  $(".tablink").click( function () {
-    var $this = $(this);
-    var thisAttr = $this.attr("data-nav");
+  $(".tablink").click(function () {
+    var $this = $(this),
+      thisAttr = $this.attr("data-nav");
     $this.addClass("current").siblings(".tablink").removeClass("current");
     $(thisAttr).show().siblings(".module").hide();
   });
@@ -59,11 +59,10 @@ TabNavigation.prototype.tabClickEvent = function () {
 
 TabNavigation.prototype.initShowFirstTabData = function () {
   this.newUnorderList.find("li:first").addClass("current");
-  var firstTabAttr = this.newUnorderList.find("li:first").attr("data-nav");
-  $(firstTabAttr).show();
+  this.elemHide.first().show();
 }
 
-TabNavigation.prototype.bindTabsNavigationEvents = function () {
+TabNavigation.prototype.bindTabNavigationEvents = function () {
   this.initShowFirstTabData();
   this.tabClickEvent();
 }
@@ -71,5 +70,5 @@ TabNavigation.prototype.bindTabsNavigationEvents = function () {
 var tab_nav = new TabNavigation($(".module"));
 tab_nav.hideAllModule();
 tab_nav.createNewTabList();
-tab_nav.cssTabsNavigation();
-tab_nav.bindTabsNavigationEvents();
+tab_nav.cssTabNavigation();
+tab_nav.bindTabNavigationEvents();
