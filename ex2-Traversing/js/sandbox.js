@@ -1,7 +1,7 @@
 //1. Select all of the image elements on the page; log each image's alt attribute.
 $('img').each(function() {
-  var thisAttr = $(this).attr('alt'); 
-  console.log(thisAttr);
+  var thisAlt = $(this).attr('alt'); 
+  console.log(thisAlt);
 });
 
 
