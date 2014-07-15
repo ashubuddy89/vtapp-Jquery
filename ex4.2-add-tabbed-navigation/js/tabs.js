@@ -67,8 +67,10 @@ TabNavigation.prototype.bindTabNavigationEvents = function () {
   this.tabClickEvent();
 }
 
-var tab_nav = new TabNavigation($(".module"));
-tab_nav.hideAllModule();
-tab_nav.createNewTabList();
-tab_nav.cssTabNavigation();
-tab_nav.bindTabNavigationEvents();
+$(function () {
+  var tab_nav = new TabNavigation($(".module"));
+  tab_nav.hideAllModule();
+  tab_nav.createNewTabList();
+  tab_nav.cssTabNavigation();
+  tab_nav.bindTabNavigationEvents();
+})

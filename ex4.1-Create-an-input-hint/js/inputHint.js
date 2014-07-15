@@ -26,6 +26,7 @@ InputHint.prototype.inputFocusEvent = function () {
 
 InputHint.prototype.inputBlurEvent = function () {
   var _this = this;
+
   this.elemInput.bind("blur", function () {
     if ($(this).val().trim() == "") {
       _this.setInputValue();
@@ -39,8 +40,10 @@ InputHint.prototype.bindInputEvents = function () {
   this.inputBlurEvent();
 }
 
-var input_hint = new InputHint($("#search label"), $(".input_text"), "hint");
-input_hint.setInputValue();
-input_hint.addClassOnInput();
-input_hint.removeLabel();
-input_hint.bindInputEvents();
+$(function () {
+  var input_hint = new InputHint($("#search label"), $(".input_text"), "hint");
+  input_hint.setInputValue();
+  input_hint.addClassOnInput();
+  input_hint.removeLabel();
+  input_hint.bindInputEvents();
+})
