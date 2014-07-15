@@ -23,11 +23,11 @@ TabNavigation.prototype.createNewListElements = function () {
 }
 
 TabNavigation.prototype.cssTabsNavigation = function () {
-  this.cssTabsNavUl();
+  this.cssTabNavUl();
   this.cssTabElementsLi();
 }
 
-TabNavigation.prototype.cssTabsNavUl = function () {
+TabNavigation.prototype.cssTabNavUl = function () {
   this.newUnorderList.css({
     listStyle: "none",
     margin: 0,
@@ -48,8 +48,8 @@ TabNavigation.prototype.cssTabElementsLi = function () {
   });
 }
 
-TabNavigation.prototype.tabsClickEvent = function () {
-  $(".tablink").on("click", function () {
+TabNavigation.prototype.tabClickEvent = function () {
+  $(".tablink").click( function () {
     var $this = $(this);
     var thisAttr = $this.attr("data-nav");
     $this.addClass("current").siblings(".tablink").removeClass("current");
@@ -65,7 +65,7 @@ TabNavigation.prototype.initShowFirstTabData = function () {
 
 TabNavigation.prototype.bindTabsNavigationEvents = function () {
   this.initShowFirstTabData();
-  this.tabsClickEvent();
+  this.tabClickEvent();
 }
 
 var tab_nav = new TabNavigation($(".module"));
