@@ -4,14 +4,9 @@ var DropDown = function (elemLink) {
 
 DropDown.prototype.hoverEvent = function () {
   this.elemLink.hover(function () {
-      var $this = $(this),
-          $subMenu = $this.find("ul");
-      $this.addClass("hover");
-      if ($subMenu.length) {
-        $subMenu.stop().fadeIn();
-      }
+      $(this).addClass("hover").find("ul").stop().fadeIn();
     },
-
+    
     function () {
       $(this).removeClass("hover").find("ul").stop().fadeOut();
     }
