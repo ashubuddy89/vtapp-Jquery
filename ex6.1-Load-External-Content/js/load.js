@@ -15,10 +15,10 @@ LoadAjaxData.prototype.createTargetElement = function(){
 LoadAjaxData.prototype.bindLoadEvent = function () {
   var _this = this;
   this.$elemLink.on("click", function(event) {
-    var $this = $(this),
-        thisAttrDataPage = ;
     event.preventDefault();
-    $this.data('target').load('data/blog.html '+thisAttrDataPage);
+    var $this = $(this),
+        thisAttrDataPage = $this.attr("data-page");
+    $this.data('target').load('data/blog.html ' + thisAttrDataPage);
   })
 }
 
