@@ -9,7 +9,7 @@ Accordion.prototype.bindAccordionEvent = function () {
     event.preventDefault();
     var $this = $(this),
       $parentElem = $this.closest("li");
-    $parentElem.siblings("li").removeClass("active").find(_this.$toggleElem).filter(':visible').slideUp();
+    $parentElem.siblings("li.active").removeClass("active").find(_this.$toggleElem).filter(':visible').slideUp();
     $parentElem.addClass("active").find(_this.$toggleElem).slideDown();
   })
 }
