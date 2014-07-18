@@ -23,8 +23,7 @@ InputHint.prototype.removeLabel = function () {
 InputHint.prototype.inputFocusEvent = function () {
   var _this = this;
   this.elemInput.bind("focus", function () {
-    var thisVal = $(this).val();
-    if (thisVal == "Enter search term"){
+    if (_this.elemInput.val() == "Enter search term"){
       _this.elemInput.removeClass(_this.hintClass).val("");
     }
   })
