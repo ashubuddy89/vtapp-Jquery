@@ -1,55 +1,64 @@
-var JsonData = function($titleElem, $textElem, $imgElem, $colorElem){
+var JsonData = function(){
+  this.$dataLoadElem = $('<div class="data-load" />');
   this.$titleElem = $('<h1 class="title" />');
   this.$textElem  = $('<h2 class="text" />');
   this.$imgElem = $('<div class="img"></div>');
   this.$colorElem = $('<h3 class="color" />');
-  this.cacheData = '';
+  this.$specials = $("#specials");
+  this.cacheData = {};
 }
 
-JsonData.prototype.createDataElement = function(){
-  $("#specials form").after('<div class="data-load" />');
+JsonData.prototype.createDataInnerElements = function(){
+  this.$dataLoadElem.append(this.$titleElem)
+                    .append(this.$textElem)
+                    .append(this.$imgElem.html('<img src="" />'))
+                    .append(this.$colorElem);
 }
 
-JsonData.prototype.createElements = function(title, text, image, color){
-  $(".data-load").css("background" , color)
-                 .append(this.$titleElem.text(title))
-                 .append(this.$textElem.text(text))
-                 .append(this.$imgElem.html('<img src=' + image + ' />'))
-                 .append(this.$colorElem.text(color));
-}
-  
-JsonData.prototype.removeButton =  function(elem){
-  $("#specials").find(".buttons").remove();
+JsonData.prototype.removeButton =  function(){
+  this.$specials.find(".buttons").remove();
 }
 
-JsonData.prototype.loadJsonData = function(json, key){
-  this.createElements(json[key].title, json[key].text, json[key].image, json[key].color);
+JsonData.prototype.loadJsonData = function(json, key, title, text, image, color){
+  this.$dataLoadElem.fadeIn().css("background" , json[key].color);
+  this.$titleElem.text(json[key].title);
+  this.$textElem.text(json[key].text);
+  this.$imgElem.find("img").attr("src", json[key].image);
+  this.$colorElem.text(json[key].color);
 }
 
 JsonData.prototype.bindClickEvent = function(){
   var _this = this;
 
-  $("#specials form select").change("option", function(event){
-    event.preventDefault();
-    var thisVal = $(this).val();
-    if(thisVal){
-      if (_this.cacheData) {
-        _this.loadJsonData(_this.cacheData, thisVal);
-      } 
-      else 
-      {
+  this.$specials.find("select").change(function(event){
+    var selectedOptionValue = $(this).val();
+
+    if(selectedOptionValue){
+      if ($.isEmptyObject(_this.cacheData)) {
         $.getJSON('data/specials.json', function (json) {
           _this.cacheData = json;
           _this.removeButton();
-          _this.loadJsonData(_this.cacheData, thisVal);
+          _this.loadJsonData(_this.cacheData, selectedOptionValue);
         });
+       // console.log("non cache data");
+      } 
+      else 
+      {
+        _this.loadJsonData(_this.cacheData, selectedOptionValue);
+        //console.log("cache data");
       }
     }
   });
 }
 
+JsonData.prototype.createDataLoadElement = function(){
+  this.$specials.find("form").after(this.$dataLoadElem);
+}
+
 $(function(){
   var json_data = new JsonData();
-      json_data.createDataElement();
-      json_data.bindClickEvent();
+
+  json_data.createDataInnerElements();
+  json_data.createDataLoadElement();
+  json_data.bindClickEvent();
 })
