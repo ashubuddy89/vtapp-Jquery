@@ -15,7 +15,7 @@ JsonData.prototype.createDataInnerElements = function(){
                     .append(this.$colorElem);
 }
 
-JsonData.prototype.removeButton =  function(){
+JsonData.prototype.removeSubmitButton =  function(){
   this.$specials.find(".buttons").remove();
 }
 
@@ -31,7 +31,6 @@ JsonData.prototype.getDataWithAjaxRequest = function(value){
   var _this = this;
   $.getJSON('data/specials.json', function (json) {
     _this.cacheData = json;
-    _this.removeButton();
     _this.loadJsonData(_this.cacheData, value);
   });
 }
@@ -50,12 +49,11 @@ JsonData.prototype.bindClickEvent = function(){
     if(selectedOptionValue){
       if ($.isEmptyObject(_this.cacheData)) {
         _this.getDataWithAjaxRequest(selectedOptionValue)
-        // console.log("non cache data");
+        _this.removeSubmitButton();
       } 
       else 
       {
         _this.getCahceData(selectedOptionValue);
-        // console.log("cache data");
       }
     }
   });
