@@ -36,8 +36,7 @@ JsonData.prototype.getDataWithAjaxRequest = function(value){
 }
 
 JsonData.prototype.getCahceData = function(value){
-  var _this = this;
-  _this.loadJsonData(_this.cacheData,value);
+  this.loadJsonData(this.cacheData,value);
 }
 
 JsonData.prototype.bindClickEvent = function(){
