@@ -2,7 +2,7 @@ var JsonData = function(){
   this.$dataLoadElem = $('<div class="data-load" />');
   this.$titleElem = $('<h1 class="title" />');
   this.$textElem  = $('<h2 class="text" />');
-  this.$imgElem = $('<div class="img"></div>');
+  this.$imgElem = $('<div class="img"><img /></div>');
   this.$colorElem = $('<h3 class="color" />');
   this.$specials = $("#specials");
   this.cacheData = {};
@@ -11,7 +11,7 @@ var JsonData = function(){
 JsonData.prototype.createDataInnerElements = function(){
   this.$dataLoadElem.append(this.$titleElem)
                     .append(this.$textElem)
-                    .append(this.$imgElem.html('<img src="" />'))
+                    .append(this.$imgElem)
                     .append(this.$colorElem);
 }
 
@@ -19,7 +19,7 @@ JsonData.prototype.removeButton =  function(){
   this.$specials.find(".buttons").remove();
 }
 
-JsonData.prototype.loadJsonData = function(json, key, title, text, image, color){
+JsonData.prototype.loadJsonData = function(json, key){
   this.$dataLoadElem.fadeIn().css("background" , json[key].color);
   this.$titleElem.text(json[key].title);
   this.$textElem.text(json[key].text);
@@ -27,25 +27,35 @@ JsonData.prototype.loadJsonData = function(json, key, title, text, image, color)
   this.$colorElem.text(json[key].color);
 }
 
+JsonData.prototype.getDataWithAjaxRequest = function(value){
+  var _this = this;
+  $.getJSON('data/specials.json', function (json) {
+    _this.cacheData = json;
+    _this.removeButton();
+    _this.loadJsonData(_this.cacheData, value);
+  });
+}
+
+JsonData.prototype.getCahceData = function(value){
+  var _this = this;
+  _this.loadJsonData(_this.cacheData,value);
+}
+
 JsonData.prototype.bindClickEvent = function(){
   var _this = this;
 
-  this.$specials.find("select").change(function(event){
+  this.$specials.find("select").change(function(){
     var selectedOptionValue = $(this).val();
 
     if(selectedOptionValue){
       if ($.isEmptyObject(_this.cacheData)) {
-        $.getJSON('data/specials.json', function (json) {
-          _this.cacheData = json;
-          _this.removeButton();
-          _this.loadJsonData(_this.cacheData, selectedOptionValue);
-        });
-       // console.log("non cache data");
+        _this.getDataWithAjaxRequest(selectedOptionValue)
+        // console.log("non cache data");
       } 
       else 
       {
-        _this.loadJsonData(_this.cacheData, selectedOptionValue);
-        //console.log("cache data");
+        _this.getCahceData(selectedOptionValue);
+        // console.log("cache data");
       }
     }
   });
