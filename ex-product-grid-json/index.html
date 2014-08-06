@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Product Grid Json</title>
+	<link href="css/reset.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<style>
+	#blog p.excerpt { display: none; }
+	</style>
+
+</head>
+
+<body>
+
+
+	<div id="main">
+		<section class="left-container">
+			<ul class="filter-box" id="brand">
+				<li><h3 class="title-box">Brands</h3></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="brand" data-brand="BRAND A"/> Brand A</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="brand" data-brand="BRAND B"/> Brand B</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="brand" data-brand="BRAND C"/> Brand C</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="brand" data-brand="BRAND D"/> Brand D</label></li>
+			</ul>
+
+			<ul class="filter-box" id="color">
+				<li><h3 class="title-box">Colors</h3></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="color" data-color="Yellow"/> Yellow</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="color" data-color="Red"/> Red</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="color" data-color="Blue"/> Blue</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="color" data-color="Green"/> Green</label></li>
+			</ul>
+
+			<ul class="filter-box" id="sold">
+				<li><h3 class="title-box">Availability</h3></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="sold" data-sold="0"/> Available</label></li>
+				<li><label><input type="checkbox" class="filter-checkbox" name="sold" data-sold="1"/> Sold Out</label></li>
+			</ul>
+		</section>
+
+		<section class="right-container">
+			<ul id="product-container"></ul>
+		</section>
+	</div>
+
+<script src="libs/jquery-1.11.0.min.js"></script>
+<script src="js/product_grid.js"></script>
+</body>
+</html>
