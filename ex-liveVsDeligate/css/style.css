@@ -1,0 +1,98 @@
+/* general */
+body{
+	font: 14px arial;
+}
+.current {
+	color: red;
+}
+
+.hover {
+	color: blue;
+}
+
+.hint {
+	color: #999;
+}
+
+h1 {
+	font-size: 250%;
+	margin: 5px 0 10px 0;
+}
+
+legend,
+h2 {
+	font-size: 150%;
+	margin: 5px 0;
+}
+
+h3 {
+	font-size: 120%;
+	margin: 5px 0;
+}
+
+h4 {
+	font-size: 110%;
+	font-weight: bold;
+	margin: 5px 0;
+}
+
+p {
+	line-height: 1.4em;
+	margin: 0 0 8px 0;
+	font-size: 90%;
+}
+
+a {
+	color: red;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #a00;
+}
+
+#main{
+	padding: 20px 130px 20px 20px;
+	max-width: 1000px;
+	border: solid 1px #f2f2f2;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	min-height: 80px;
+}
+
+button{
+	background: lightblue;
+	padding: 8px 10px 7px;
+	color: darkblue;
+	border: none;
+	position: absolute;
+	right: 20px;
+	top: 22px;
+	font-size: 15px;
+	cursor: pointer;
+}
+button:hover{
+	background: green;
+	color: #fff;
+}
+button, #main .row{
+	-webkit-transition: all .5s ease;
+    	-moz-transition: all .5s ease;
+    	-o-transition: all .5s ease;
+    	transition: all .5s ease;
+}
+#main .row{
+	background: #f2f2f2;
+	padding: 10px;
+	margin: 2px 0;
+	width: 70%;
+	text-align: left;
+	cursor: pointer;
+}
+
+#main .row.highlight{
+	background: lightgreen;
+	width: 100%;
+	font-weight: bold;
+}
