@@ -10,14 +10,14 @@ DynamicDiv.prototype.createNewDivRow = function(){
 
 DynamicDiv.prototype.removeFirstRow = function(){
   var _this = this;
-  this.stackDiv.delegate(".row:first","click", function(){
+  this.stackDiv.delegate(".row:first", "click" , function(){
     $(this).remove();
     _this.counter--;
   })
 }
 
 DynamicDiv.prototype.addHighlightClassOnRow = function(){
-  this.stackDiv.delegate(".row","click", function(){
+  this.stackDiv.delegate(".row", "click" , function(){
     $(this).toggleClass("highlight");
   })
 }
