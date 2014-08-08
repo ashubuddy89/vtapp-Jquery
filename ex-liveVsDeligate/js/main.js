@@ -1,16 +1,15 @@
 var DynamicDiv = function (){
   this.stackDiv = $("#stack-container");
   this.rowStr = "<div class='row'>new</div>";
-  this.counter = '1';
+  this.counter = 1;
 }
 
 DynamicDiv.prototype.createNewDivRow = function(){
-  var _this = this;
-  this.stackDiv.prepend($(_this.rowStr).text(_this.counter++));
+  this.stackDiv.prepend($(this.rowStr).text(this.counter++));
 }
 
 DynamicDiv.prototype.removeFirstRow = function(){
-  var _this= this;
+  var _this = this;
   this.stackDiv.delegate(".row:first","click", function(){
     $(this).remove();
     _this.counter--;
