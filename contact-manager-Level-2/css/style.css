@@ -1,0 +1,109 @@
+/* general */
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+body{
+	font: 14px arial;
+	color: #864e52;
+}
+.current {
+	color: red;
+}
+
+.hover {
+	color: blue;
+}
+
+.hint {
+	color: #999;
+}
+
+h1 {
+	font-size: 250%;
+	margin: 5px 0 10px 0;
+}
+
+legend,
+h2 {
+	font-size: 150%;
+	margin: 5px 0;
+}
+
+h3 {
+	font-size: 120%;
+	margin: 5px 0;
+}
+
+h4 {
+	font-size: 110%;
+	font-weight: bold;
+	margin: 5px 0;
+}
+
+p {
+	line-height: 1.4em;
+	margin: 0 0 8px 0;
+	font-size: 90%;
+}
+
+a {
+	color: green;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #a00;
+}
+
+#container{
+	width: 100%;
+	padding: 10px;
+}
+
+label input{
+	border: solid 1px #cacaca;
+	padding: 5px 10px;
+	margin-right: 10px;
+	width: 300px;
+}
+button{
+	width: 100px;
+	height: 28px;
+	font-size: 16px;
+	background: green;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+.search-bar{
+	margin-top: 20px;
+	background: #f2f2f2;
+	padding: 10px;
+}
+
+.result-lsiting{
+	padding: 20px 0 0 0;
+	display: table;
+	width: 100%;
+}
+h4{
+	padding-top: 0;
+	margin-top: 0;
+}
+.user-data-block{
+	float: left;
+	border: solid 1px;
+	padding: 10px;
+	margin: 5px;
+}
+
+button.del{
+	background: red;
+	font-size: 13px;
+	margin-top: 10px;
+	padding: 5px 10px;
+	width: auto;
+}
