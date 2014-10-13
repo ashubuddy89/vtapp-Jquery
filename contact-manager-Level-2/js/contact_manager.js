@@ -65,13 +65,13 @@ ContactManager.prototype.validateBlankInput = function(name, email){
 ContactManager.prototype.validateEmail = function(){
   var _this = this,
       email= this.param.$emailInput.val();
-    if(!this.emailReg.test( email )) {
-      alert("Please enter valid email");
-      return false;
-    }
-    else{
-      return true;
-    }
+  if(!this.emailReg.test( email )) {
+    alert("Please enter valid email");
+    return false;
+  }
+  else{
+    return true;
+  }
 }
 
 $(function(){
