@@ -1,24 +1,30 @@
-var ContactManager = function (){
-  this.blockContaier = $(".result-listing");
-  this.emailBox = $("#email");
+var ContactManager = function (param){
+  this.param = param;
   this.emailReg = /^[\w-]+(\.[\w-]+)*@[A-Za-z0-9-]{2,}(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,4})$/;
 }
 
-ContactManager.prototype.createContactBlock = function (name, email) {
-  return this.blockContaier.append($('<div class="user-data-block" data-search="'+name.toLowerCase()+'"><h4>'+name+'</h4><h6><a href="mailto:'+email+'">'+email+'</a></h6><button class="del">Delete</button></div>'));
+ContactManager.prototype.bindEvents = function (){
+  this.addContactButtonClickEvent();
+  this.deleteContactClickEvent();
+  this.searchResult();
 }
 
-ContactManager.prototype.buttonClickEvent = function () {
+ContactManager.prototype.createContactBlock = function (name, email) {
+  return this.param.$blockContainer.append($('<div class="user-data-block" data-search="'+name.toLowerCase()+'"><h4>'+name+'</h4><h6><a href="mailto:'+email+'">'+email+'</a></h6><button class="del">Delete</button></div>'));
+}
+
+ContactManager.prototype.addContactButtonClickEvent = function () {
   var _this = this;
   $("#add-btn").on("click", function(){
-    var nameVal = $("#name").val(),
-        emailVal = $("#email").val();
+    var nameVal = _this.param.$nameInput.val(),
+        emailVal = _this.param.$emailInput.val();
+
     _this.validateBlankInput(nameVal, emailVal);
   })
 }
 
-ContactManager.prototype.deleteClickEvent = function () {
-  $(".result-lsiting").delegate(".del", "click", function(){
+ContactManager.prototype.deleteContactClickEvent = function () {
+  this.param.$blockContainer.delegate(".del", "click", function(){
     $(this).parents(".user-data-block").remove();
   })
 }
@@ -39,7 +45,7 @@ ContactManager.prototype.searchResult = function (){
 
 ContactManager.prototype.validateBlankInput = function(name, email){
   var _this = this;
-  $(".require").each(function(){
+  this.param.$required.each(function(){
     var $this = $(this),
         $validateData =  $this.data("validate");
     if($this.val().trim() == '')  {
@@ -49,16 +55,16 @@ ContactManager.prototype.validateBlankInput = function(name, email){
     }
 
     if($validateData == "email"){
-      if(_this.checkValidateEmail()){
+      if(_this.validateEmail()){
         _this.createContactBlock(name, email);        
       }
     }
   })
 }
 
-ContactManager.prototype.checkValidateEmail = function(){
+ContactManager.prototype.validateEmail = function(){
   var _this = this,
-      email=this.emailBox.val();
+      email= this.param.$emailInput.val();
     if(!this.emailReg.test( email )) {
       alert("Please enter valid email");
       return false;
@@ -68,13 +74,8 @@ ContactManager.prototype.checkValidateEmail = function(){
     }
 }
 
-ContactManager.prototype.bindEvents = function (){
-  this.buttonClickEvent();
-  this.deleteClickEvent();
-  this.searchResult();
-}
-
 $(function(){
-  var contactManager = new ContactManager();
+  var param = {$required:$(".required"), $nameInput:$("#name"), $emailInput:$("#email"), $blockContainer: $(".result-listing")},
+      contactManager = new ContactManager(param);
   contactManager.bindEvents();
 })
