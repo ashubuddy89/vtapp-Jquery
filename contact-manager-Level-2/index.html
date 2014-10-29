@@ -9,9 +9,9 @@
 
 <body>
 	<div id="container">
-    <label>Name <input type="text" id="name" class="input required" data-validate="text" data-name="Name"/></label>
-    <label>Email <input type="text" id="email" class="input required" data-validate="email" data-name="Email"/></label>
-    <button class="button" id="add-btn">Add</button>
+    <label>Name <input type="text" id="name" class="input required name" data-validate="text" data-name="Name"/></label>
+    <label>Email <input type="text" id="email" class="input required email" data-validate="email" data-name="Email"/></label>
+    <button class="button add-contact" id="add-btn">Add</button>
     <div class="search-bar">
       <label>Search <input type="text" id="search"/></label>
     </div>
@@ -20,5 +20,9 @@
   </div>
 <script src="libs/jquery-1.11.0.min.js"></script>
 <script src="js/contact_manager.js"></script>
+<script src="js/validation.js"></script>
+<script type="text/javascript">
+  var ashu = new Validation();
+</script>
 </body>
 </html>

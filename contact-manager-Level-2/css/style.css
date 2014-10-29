@@ -100,7 +100,7 @@ h4{
 	margin: 5px;
 }
 
-button.del{
+.delete{
 	background: red;
 	font-size: 13px;
 	margin-top: 10px;
