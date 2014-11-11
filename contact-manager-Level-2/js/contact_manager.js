@@ -27,7 +27,7 @@ ContactManager.prototype.addContactButtonClickEvent = function () {
   
 
     
-    if( !Validation.validateBlankInput(_this.paramAttributes.required, "error") ){
+    if( !Validation.validateBlankInputs(_this.paramAttributes.required, "error") ){
       alert($(".error").data("name") + " cant be blank")
     } 
     else if( !Validation.validateEmail(_this.paramAttributes.emailInput, "error") ){
