@@ -1,14 +1,7 @@
 var OrderList = function (){
   this.$productContainer = $(".product-container");
   
-  this.order = '{ "Order Id - 145":[{"id":"121","name":"Nokia","qty":"20","price":"10"}, {"id":"212","name":"Motorolla","qty":"5","price":"200"}, {"id":"222","name":"LG","qty":"5","price":"200"}],"order Id - 2":[{"id":"231","name":"Nokia Lumia","qty":"20","price":"10000"}, {"id":"202","name":"Xolo","qty":"5","price":"150"}, {"id":"212","name":"Google","qty":"5","price":"200"}],"order Id - 21":[{"id":"231","name":"kNokia Lumia","qty":"20","price":"10000"}, {"id":"202","name":"kXolo","qty":"5","price":"150"}, {"id":"212","name":"kGoogle","qty":"5","price":"210"}] }'
-}
-
-OrderList.prototype.createOrderListing = function(id, item){
-  this.$productContainer.append($("<li />").addClass("order-item-list")
-                                           .append($('<h4 />').text("order " + item.id))
-                                           .append($('<h6 />').text(item.name))
-                                          );
+  this.order = '{ "Order Id - 145":[{"id":"121","name":"Ashu","qty":"20","price":"10"}, {"id":"212","name":"Motorolla","qty":"5","price":"200"}, {"id":"222","name":"LG","qty":"5","price":"200"}],"order Id - 2":[{"id":"231","name":"Diskhu Lumia","qty":"20","price":"10000"}, {"id":"202","name":"Xolo","qty":"5","price":"150"}, {"id":"212","name":"Google","qty":"5","price":"200"}],"order Id - 21":[{"id":"231","name":"kNokia Lumia","qty":"20","price":"10000"}, {"id":"202","name":"kXolo","qty":"5","price":"150"}, {"id":"212","name":"kGoogle","qty":"5","price":"210"}] }'
 }
 
 OrderList.prototype.getOrder = function(i) {

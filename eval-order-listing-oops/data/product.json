@@ -1,0 +1,8 @@
+[ {"id":"1", "name":"Samsung","qty":"1","price":"100"},
+  {"id":"2", "name":"Nokia","qty":"2","price":"1000"},
+  {"id":"3", "name":"Sansuri","qty":"3","price":"200"},
+  {"id":"4", "name":"Moto","qty":"4","price":"50"},
+  {"id":"5", "name":"Google","qty":"5","price":"20"},
+  {"id":"6", "name":"Karbon","qty":"6","price":"200"},
+  {"id":"7", "name":"Xolo","qty":"7","price":"220"}
+]
