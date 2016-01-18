@@ -1,0 +1,13 @@
+body {
+  padding: 20px;
+}
+.btn {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+}
+td {
+  text-align: left;
+}
+.table {
+  margin-bottom: 0;
+}
